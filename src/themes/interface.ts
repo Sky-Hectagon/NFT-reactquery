@@ -1,0 +1,33 @@
+export interface IColor {
+  color: string;
+  gold?: string;
+  gray?: string;
+  textHighlightColor?: string;
+  backgroundColor?: string;
+  background?: string;
+  paperBg?: string;
+  modalBg?: string;
+  popoverBg?: string;
+  menuBg?: string;
+  backdropBg?: string;
+  largeTextColor?: string;
+  activeLinkColor?: string;
+  activeLinkSvgColor?: string;
+  primaryButtonColor?: string;
+  primaryButtonBG?: string;
+  primaryButtonHoverBG?: string;
+  secondaryButtonHoverBG: string;
+  outlinedPrimaryButtonHoverBG: string;
+  outlinedPrimaryButtonHoverColor: string;
+  outlinedSecondaryButtonHoverBG?: string;
+  outlinedSecondaryButtonHoverColor?: string;
+  containedSecondaryButtonHoverBG?: string;
+  graphStrokeColor?: string;
+  gridButtonHoverBackground?: string;
+  gridButtonActiveBackground?: string;
+  switchBg?: string;
+  backgroundGradient?: string;
+  backgroundGradientHover?: string;
+  primaryButtonHoverColor?: string;
+  backgroundButtonGradient?: string;
+}
