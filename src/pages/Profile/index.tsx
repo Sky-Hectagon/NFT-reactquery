@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { Grid, Pagination, Skeleton, Button, Stack, Alert } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { useWeb3Context } from "src/hooks";
@@ -14,10 +16,14 @@ import {
   IDetailNFTAsyncThunk,
 } from "src/slices/interfaces";
 
+const limitPanigation = 12;
+
  const Profile = () => {
   const history = useHistory();
+  const [page, setPage] = useState(1);
+
   const { address, provider, networkId, connected, connect } = useWeb3Context();
-  const { data: ownerNft, isLoading: loading } = getNFTOwner({ provider: provider, address, networkID: networkId }, 1);
+  const { data: ownerNft, isLoading: loading } = getNFTOwner({ provider: provider, address, networkID: networkId }, page);
   const { mutate: transferNFT, isLoading: pendingTransactions } = useTransferNFT();
 
   if (!connected) {
@@ -113,6 +119,24 @@ import {
           </Typography>
         )}
       </Grid>
+
+      <Stack sx={{ alignItems: "center", mt: 3 }}>
+        {ownerNft && ownerNft.ownerBalance > 1 && (
+          <Pagination
+            page={page}
+            count={
+              ownerNft.ownerBalance % limitPanigation === 0
+                ? Math.floor(ownerNft.ownerBalance / limitPanigation)
+                : Math.floor(ownerNft.ownerBalance / limitPanigation) + 1
+            }
+            onChange={(event, page) => {
+              setPage(page);
+            }}
+            variant="outlined"
+            shape="rounded"
+          />
+        )}
+      </Stack>
     </div>
   );
 }

@@ -12,6 +12,7 @@ import {
 
 type ownerNftType = {
   data: INFTMetadata[];
+  ownerBalance: number;
 }
 
 const limitPanigation = 12;
